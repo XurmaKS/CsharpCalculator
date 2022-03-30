@@ -2,39 +2,39 @@
 
 namespace Calculator2._0
 {
-    public class MathOperation: IMathOperation
+    public class MathOperation : IMathOperation
+
     {
-        
-        public double addition(double numOne, double numTwo)
+        public double Addition(NumberForCalculate number)
         {
             //сложение
-            return numOne + numTwo;
+            return number.OneNumber + number.TwoNumber;
+           
         }
 
-        public double subtraction(double numOne, double numTwo)
+        public double Subtraction(NumberForCalculate number)
         {
             //вычитание
-            return numOne - numTwo;
+            return number.OneNumber - number.TwoNumber;
         }
 
-        public double multiplication(double numOne, double numTwo)
+        public double Multiplication(NumberForCalculate number)
         {
             //умножение
-            return numOne * numTwo;
-
+            return number.OneNumber * number.TwoNumber;
         }
 
-        public double division(double numOne, double numTwo)
+        public double Division(NumberForCalculate number)
         {
             //деление
-            double result = numOne / numTwo;
-            if (numTwo == 0)
+            double result = number.OneNumber / number.TwoNumber;
+           
+            if (number.TwoNumber == 0)
             {
                 throw new Exception("Invalid command");
             }
 
             return result;
-
         }
     }
 }

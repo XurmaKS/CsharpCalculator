@@ -8,6 +8,6 @@
 
         void MessageInput();
 
-        void ResultOperation();
+        void ResultOperation(double result);
     }
 }

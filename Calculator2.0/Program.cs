@@ -11,18 +11,17 @@ namespace Calculator2._0
             Calculations calculations = new Calculations(mathOperation);
             EnteringNumbers enteringNumbers = new EnteringNumbers();
 
-
-            while (true) {
-                try {
+            while (true)
+            {
+                try
+                {
                     message.MessageBeginningOfWork();
-                    enteringNumbers.commandBegin();
-                    var result = calculations.Calculate(enteringNumbers);
-                    message.ResultOperation();
-                    Console.WriteLine(result);
-
+                    var result = calculations.Calculate(Calculations.GettingANumberToSelectACommand());
+                    message.ResultOperation(result);
                 }
-                catch (Exception e){
-                    Console.WriteLine(e.Message); 
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
                 }
             }
         }

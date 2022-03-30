@@ -4,40 +4,37 @@ namespace Calculator2._0
 {
     public class EnteringNumbers
     {
-        public int command;
-        public double inputNumber;
-        IAllMessage outputMessage = new AllMessage();
+        public double InputNumber;
+        IAllMessage _outputMessage = new AllMessage();
 
-        public int commandBegin()
+        // public double[] GetTwoValuesForCalculations()
+        // {
+        //     double[] arrayOfNumbersToCalculate = new double [2];
+        //     for (int i = 0; i < arrayOfNumbersToCalculate.Length; i++)
+        //     {
+        //         arrayOfNumbersToCalculate[i] = GetNumberForOperations();
+        //     }
+        //
+        //     return arrayOfNumbersToCalculate;
+        // }
+
+        public NumberForCalculate GetNumbersForCalculations()
         {
-            string input = Console.ReadLine();;
-            if (!int.TryParse(input, out command))
-            {
-                outputMessage.MessageError();
-                commandBegin();
-            }
-
-            while ((command < 0 || command > 4))
-            {
-                outputMessage.MessageError();
-                input = Console.ReadLine();
-                command = Int32.Parse(input);
-            }
-
-            return command;
+            NumberForCalculate numberForCalculate = new NumberForCalculate();
+            numberForCalculate.OneNumber = GetNumberForOperations();
+            numberForCalculate.TwoNumber = GetNumberForOperations();
+            return numberForCalculate;
         }
 
-        public double commandInputNumbers()
+        private double GetNumberForOperations()
         {
-            outputMessage.MessageInput();
+            _outputMessage.MessageInput();
             string input = Console.ReadLine();
-            if (!double.TryParse(input, out inputNumber))
-            {
-                outputMessage.MessageError();
-                inputNumber = commandInputNumbers();
-            }
+            if (double.TryParse(input, out InputNumber)) return InputNumber;
+            _outputMessage.MessageError();
+            InputNumber = GetNumberForOperations();
 
-            return inputNumber;
+            return InputNumber;
         }
     }
 }
