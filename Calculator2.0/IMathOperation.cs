@@ -2,12 +2,12 @@
 {
     public interface IMathOperation
     {
-        double Addition(NumberForCalculate number);
+        double Addition(Data number);
 
-        double Subtraction(NumberForCalculate number);
+        double Subtraction(Data number);
 
-        double Multiplication(NumberForCalculate number);
+        double Multiplication(Data number);
 
-        double Division(NumberForCalculate number);
+        double Division(Data number);
     }
 }

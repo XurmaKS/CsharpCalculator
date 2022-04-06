@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Calculator2._0
 {
@@ -6,8 +7,9 @@ namespace Calculator2._0
     {
         public void MessageBeginningOfWork()
         {
-            Console.WriteLine("Привет! Я приложение калькулятор, пожалуйста, выберите одну из команд: " +
-                              "\n1 - сложение; \n2 - вычитание; \n3 - умножение; \n4 - деление.");
+
+            Console.WriteLine($"Привет! Я приложение калькулятор, пожалуйста, выберите одну из команд: ");
+            GetEnum();
         }
 
         public void MessageError()
@@ -25,5 +27,15 @@ namespace Calculator2._0
         {
             Console.WriteLine("Итог " + result);
         }
+
+        private void GetEnum()
+        {
+            Dictionary<int, string> list = new Dictionary<int, string>(Calculations.EnumList());
+            foreach (var key in list)
+            {
+             Console.WriteLine(key.Key + " -> " + key.Value);
+            }
+        }
     }
+    
 }

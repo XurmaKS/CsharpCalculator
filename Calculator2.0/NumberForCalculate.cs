@@ -2,9 +2,9 @@
 {
     public class NumberForCalculate
     {
-       
-        public double OneNumber;
-        public double TwoNumber;
+      public double OneNumber { get; set; }
+
+        public double TwoNumber { get; set; }
 
     }
 }

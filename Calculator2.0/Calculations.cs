@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Calculator2._0
 {
@@ -11,50 +13,34 @@ namespace Calculator2._0
             MathOperation = mathOperation;
         }
 
-        public double Calculate(Operations operations)
+        public double Calculate(Data data)
         {
-            var enteringNumbers = new EnteringNumbers();
-            switch (operations)
+        switch (data.Operation)
             {
-                case Operations.Addition:
+                case Operation.Addition:
 
-                    return MathOperation.Addition(enteringNumbers.GetNumbersForCalculations());
+                    return MathOperation.Addition(data.Entering.GetNumbersForCalculations());
 
-                case Operations.Subtraction:
-                    return MathOperation.Subtraction(enteringNumbers.GetNumbersForCalculations());
+                case Operation.Subtraction:
+                    return MathOperation.Subtraction(data.Entering.GetNumbersForCalculations());
 
-                case Operations.Multiplication:
-                    return MathOperation.Multiplication(enteringNumbers.GetNumbersForCalculations());
+                case Operation.Multiplication:
+                    return MathOperation.Multiplication(data.Entering.GetNumbersForCalculations());
 
-                case Operations.Division:
-                    return MathOperation.Division(enteringNumbers.GetNumbersForCalculations());
+                case Operation.Division:
+                    return MathOperation.Division(data.Entering.GetNumbersForCalculations());
 
                 default:
                     throw new Exception("Invalid command");
             }
         }
 
-        public static Operations GettingANumberToSelectACommand()
-        {
-            IAllMessage outputMessage = new AllMessage();
-            int numberToSelectACommand;
-            string input = Console.ReadLine();
-            if (!int.TryParse(input, out numberToSelectACommand) ||
-                !Enum.IsDefined(typeof(Operations), numberToSelectACommand))
-            {
-                outputMessage.MessageError();
-                input = Console.ReadLine();
-                numberToSelectACommand = Int32.Parse(input);
-            }
-            return (Operations) numberToSelectACommand;
-        }
+        
 
-        public enum Operations
+        public static Dictionary<int, string> EnumList()
         {
-            Addition = 1,
-            Subtraction = 2,
-            Multiplication = 3,
-            Division = 4
+            return Enum.GetValues(typeof(Operation)).Cast<Operation>()
+                .ToDictionary(operation => (int) operation, operation => operation.ToString());
         }
     }
 }

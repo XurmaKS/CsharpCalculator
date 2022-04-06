@@ -6,24 +6,14 @@ namespace Calculator2._0
     {
         public double InputNumber;
         IAllMessage _outputMessage = new AllMessage();
-
-        // public double[] GetTwoValuesForCalculations()
-        // {
-        //     double[] arrayOfNumbersToCalculate = new double [2];
-        //     for (int i = 0; i < arrayOfNumbersToCalculate.Length; i++)
-        //     {
-        //         arrayOfNumbersToCalculate[i] = GetNumberForOperations();
-        //     }
-        //
-        //     return arrayOfNumbersToCalculate;
-        // }
-
-        public NumberForCalculate GetNumbersForCalculations()
+        
+        public Data GetNumbersForCalculations()
         {
-            NumberForCalculate numberForCalculate = new NumberForCalculate();
-            numberForCalculate.OneNumber = GetNumberForOperations();
-            numberForCalculate.TwoNumber = GetNumberForOperations();
-            return numberForCalculate;
+            Data datanum = new Data();
+            datanum.Numbers = new NumberForCalculate();
+            datanum.Numbers.OneNumber = GetNumberForOperations();
+            datanum.Numbers.TwoNumber = GetNumberForOperations();
+            return datanum;
         }
 
         private double GetNumberForOperations()

@@ -7,16 +7,18 @@ namespace Calculator2._0
         static void Main(string[] args)
         {
             IAllMessage message = new AllMessage();
-            IMathOperation mathOperation = new MathOperation();
-            Calculations calculations = new Calculations(mathOperation);
-            EnteringNumbers enteringNumbers = new EnteringNumbers();
+            MathOperation _mathOperation = new MathOperation();
+            Calculations _calculations = new Calculations(_mathOperation);
 
             while (true)
             {
                 try
                 {
+                    Data data = new Data();
                     message.MessageBeginningOfWork();
-                    var result = calculations.Calculate(Calculations.GettingANumberToSelectACommand());
+                    data.GetANumberToSelectACommand();
+                    
+                    var result = _calculations.Calculate(data);
                     message.ResultOperation(result);
                 }
                 catch (Exception e)

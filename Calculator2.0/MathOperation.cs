@@ -5,31 +5,31 @@ namespace Calculator2._0
     public class MathOperation : IMathOperation
 
     {
-        public double Addition(NumberForCalculate number)
+        public double Addition(Data number)
         {
             //сложение
-            return number.OneNumber + number.TwoNumber;
+            return   number.Numbers.OneNumber + number.Numbers.TwoNumber;
            
         }
 
-        public double Subtraction(NumberForCalculate number)
+        public double Subtraction(Data number)
         {
             //вычитание
-            return number.OneNumber - number.TwoNumber;
+            return number.Numbers.OneNumber - number.Numbers.TwoNumber;
         }
 
-        public double Multiplication(NumberForCalculate number)
+        public double Multiplication(Data number)
         {
             //умножение
-            return number.OneNumber * number.TwoNumber;
+            return number.Numbers.OneNumber * number.Numbers.TwoNumber;
         }
 
-        public double Division(NumberForCalculate number)
+        public double Division(Data number)
         {
             //деление
-            double result = number.OneNumber / number.TwoNumber;
+            double result = number.Numbers.OneNumber / number.Numbers.TwoNumber;
            
-            if (number.TwoNumber == 0)
+            if (number.Numbers.TwoNumber == 0)
             {
                 throw new Exception("Invalid command");
             }
