@@ -10,6 +10,7 @@ namespace Calculator2._0
             MathOperation _mathOperation = new MathOperation();
             Calculations _calculations = new Calculations(_mathOperation);
 
+
             while (true)
             {
                 try
@@ -17,7 +18,7 @@ namespace Calculator2._0
                     Data data = new Data();
                     message.MessageBeginningOfWork();
                     data.GetANumberToSelectACommand();
-                    
+                    data.Numbers = EnteringNumbers.GetNumbersForCalculations();
                     var result = _calculations.Calculate(data);
                     message.ResultOperation(result);
                 }

@@ -22,15 +22,14 @@ namespace Calculator2._0
             Console.WriteLine("Введите число");
         }
 
-
-        public void ResultOperation(double result)
+         public void ResultOperation(double result)
         {
             Console.WriteLine("Итог " + result);
         }
 
         private void GetEnum()
         {
-            Dictionary<int, string> list = new Dictionary<int, string>(Calculations.EnumList());
+            Dictionary<int, string> list = new Dictionary<int, string>(ListEnum.EnumList());
             foreach (var key in list)
             {
              Console.WriteLine(key.Key + " -> " + key.Value);

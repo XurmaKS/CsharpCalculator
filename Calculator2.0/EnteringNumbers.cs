@@ -2,22 +2,21 @@
 
 namespace Calculator2._0
 {
-    public class EnteringNumbers
+    static class EnteringNumbers
     {
-        public double InputNumber;
-        IAllMessage _outputMessage = new AllMessage();
-        
-        public Data GetNumbersForCalculations()
+        static double InputNumber;
+
+        public static NumberForCalculate GetNumbersForCalculations()
         {
-            Data datanum = new Data();
-            datanum.Numbers = new NumberForCalculate();
-            datanum.Numbers.OneNumber = GetNumberForOperations();
-            datanum.Numbers.TwoNumber = GetNumberForOperations();
-            return datanum;
+           NumberForCalculate numberForCalculate = new NumberForCalculate();
+            numberForCalculate.OneNumber = GetNumberForOperations();
+            numberForCalculate.TwoNumber = GetNumberForOperations();
+            return numberForCalculate;
         }
 
-        private double GetNumberForOperations()
+        public static double GetNumberForOperations()
         {
+            IAllMessage _outputMessage = new AllMessage();
             _outputMessage.MessageInput();
             string input = Console.ReadLine();
             if (double.TryParse(input, out InputNumber)) return InputNumber;

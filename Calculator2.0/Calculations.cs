@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Calculator2._0
 {
@@ -19,16 +18,16 @@ namespace Calculator2._0
             {
                 case Operation.Addition:
 
-                    return MathOperation.Addition(data.Entering.GetNumbersForCalculations());
+                    return MathOperation.Addition(data.Numbers);
 
                 case Operation.Subtraction:
-                    return MathOperation.Subtraction(data.Entering.GetNumbersForCalculations());
+                    return MathOperation.Subtraction(data.Numbers);
 
                 case Operation.Multiplication:
-                    return MathOperation.Multiplication(data.Entering.GetNumbersForCalculations());
+                    return MathOperation.Multiplication(data.Numbers);
 
                 case Operation.Division:
-                    return MathOperation.Division(data.Entering.GetNumbersForCalculations());
+                    return MathOperation.Division(data.Numbers);
 
                 default:
                     throw new Exception("Invalid command");
@@ -37,10 +36,6 @@ namespace Calculator2._0
 
         
 
-        public static Dictionary<int, string> EnumList()
-        {
-            return Enum.GetValues(typeof(Operation)).Cast<Operation>()
-                .ToDictionary(operation => (int) operation, operation => operation.ToString());
-        }
+       
     }
 }
