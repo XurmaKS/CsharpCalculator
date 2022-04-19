@@ -2,42 +2,28 @@
 
 namespace Calculator2._0
 {
-    public class EnteringNumbers
+    static class EnteringNumbers
     {
-        public int command;
-        public double inputNumber;
-        IAllMessage outputMessage = new AllMessage();
+        static double InputNumber;
 
-        public int commandBegin()
+        public static NumberForCalculate GetNumbersForCalculations()
         {
-            string input = Console.ReadLine();;
-            if (!int.TryParse(input, out command))
-            {
-                outputMessage.MessageError();
-                commandBegin();
-            }
-
-            while ((command < 0 || command > 4))
-            {
-                outputMessage.MessageError();
-                input = Console.ReadLine();
-                command = Int32.Parse(input);
-            }
-
-            return command;
+           NumberForCalculate numberForCalculate = new NumberForCalculate();
+            numberForCalculate.OneNumber = GetNumberForOperations();
+            numberForCalculate.TwoNumber = GetNumberForOperations();
+            return numberForCalculate;
         }
 
-        public double commandInputNumbers()
+        public static double GetNumberForOperations()
         {
-            outputMessage.MessageInput();
+            IAllMessage _outputMessage = new AllMessage();
+            _outputMessage.MessageInput();
             string input = Console.ReadLine();
-            if (!double.TryParse(input, out inputNumber))
-            {
-                outputMessage.MessageError();
-                inputNumber = commandInputNumbers();
-            }
+            if (double.TryParse(input, out InputNumber)) return InputNumber;
+            _outputMessage.MessageError();
+            InputNumber = GetNumberForOperations();
 
-            return inputNumber;
+            return InputNumber;
         }
     }
 }

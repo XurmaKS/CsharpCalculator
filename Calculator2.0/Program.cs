@@ -7,22 +7,24 @@ namespace Calculator2._0
         static void Main(string[] args)
         {
             IAllMessage message = new AllMessage();
-            IMathOperation mathOperation = new MathOperation();
-            Calculations calculations = new Calculations(mathOperation);
-            EnteringNumbers enteringNumbers = new EnteringNumbers();
+            MathOperation _mathOperation = new MathOperation();
+            Calculations _calculations = new Calculations(_mathOperation);
 
 
-            while (true) {
-                try {
+            while (true)
+            {
+                try
+                {
+                    Data data = new Data();
                     message.MessageBeginningOfWork();
-                    enteringNumbers.commandBegin();
-                    var result = calculations.Calculate(enteringNumbers);
-                    message.ResultOperation();
-                    Console.WriteLine(result);
-
+                    data.GetANumberToSelectACommand();
+                    data.Numbers = EnteringNumbers.GetNumbersForCalculations();
+                    var result = _calculations.Calculate(data);
+                    message.ResultOperation(result);
                 }
-                catch (Exception e){
-                    Console.WriteLine(e.Message); 
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
                 }
             }
         }

@@ -1,40 +1,41 @@
 ﻿using System;
 
+
 namespace Calculator2._0
 {
     public class Calculations
     {
-        public IMathOperation mathOperation;
+        public IMathOperation MathOperation;
 
         public Calculations(IMathOperation mathOperation)
         {
-            this.mathOperation = mathOperation;
+            MathOperation = mathOperation;
         }
 
-        public double Calculate(EnteringNumbers enteringNumbers)
+        public double Calculate(Data data)
         {
-            switch (enteringNumbers.command)
+        switch (data.Operation)
             {
-                case 1:
+                case Operation.Addition:
 
-                    return mathOperation.addition(enteringNumbers.commandInputNumbers(),
-                        enteringNumbers.commandInputNumbers());
-                
-                case 2:
-                    return mathOperation.subtraction(enteringNumbers.commandInputNumbers(),
-                        enteringNumbers.commandInputNumbers());
-                
-                case 3:
-                    return mathOperation.multiplication(enteringNumbers.commandInputNumbers(),
-                        enteringNumbers.commandInputNumbers());
-                
-                case 4:
-                    return mathOperation.division(enteringNumbers.commandInputNumbers(),
-                        enteringNumbers.commandInputNumbers());
-                
+                    return MathOperation.Addition(data.Numbers);
+
+                case Operation.Subtraction:
+                    return MathOperation.Subtraction(data.Numbers);
+
+                case Operation.Multiplication:
+                    return MathOperation.Multiplication(data.Numbers);
+
+                case Operation.Division:
+                    return MathOperation.Division(data.Numbers);
+
                 default:
                     throw new Exception("Invalid command");
             }
         }
+
+        
+
+       
     }
 }
